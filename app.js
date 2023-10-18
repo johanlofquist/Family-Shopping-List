@@ -19,15 +19,19 @@ const inputFieldEl = document.querySelector("#input-field");
 const ulEl = document.querySelector("#shopping-list");
 
 onValue(shoppingListInDB, function (snapshot) {
-  let itemsArray = Object.entries(snapshot.val());
+  if (snapshot.exists()) {
+    let itemsArray = Object.entries(snapshot.val());
 
-  clearItemsListEl();
+    clearItemsListEl();
 
-  for (let i = 0; i < itemsArray.length; i++) {
-    let currentItem = itemsArray[i];
-    let currentItemID = currentItem[0];
-    let currentItemValue = currentItem[1];
-    appendItemToItemsListEl(currentItem);
+    for (let i = 0; i < itemsArray.length; i++) {
+      let currentItem = itemsArray[i];
+      let currentItemID = currentItem[0];
+      let currentItemValue = currentItem[1];
+      appendItemToItemsListEl(currentItem);
+    }
+  } else {
+    ulEl.innerHTML = ""
   }
 });
 
@@ -47,9 +51,9 @@ function appendItemToItemsListEl(item) {
   let itemValue = item[1];
   let newEl = document.createElement("li");
   newEl.textContent = itemValue;
-  newEl.addEventListener("click", function() {
-    let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
-    remove(exactLocationOfItemInDB)
-  })
+  newEl.addEventListener("click", function () {
+    let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`);
+    remove(exactLocationOfItemInDB);
+  });
   ulEl.append(newEl);
 }
