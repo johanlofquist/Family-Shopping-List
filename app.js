@@ -5,6 +5,7 @@ import {
   push,
   onValue,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
 const appSettings = {
   databaseURL:
     "https://shopping-list-67f02-default-rtdb.europe-west1.firebasedatabase.app/",
@@ -15,11 +16,12 @@ const shoppingListInDB = ref(database, "shoppingList");
 const inputBtn = document.querySelector("#input-btn");
 const inputFieldEl = document.querySelector("#input-field");
 const ulEl = document.querySelector("#shopping-list");
+
 onValue(shoppingListInDB, function (snapshot) {
   let itemsArray = Object.values(snapshot.val());
 
   clearItemsListEl();
-
+  
   for (let i = 0; i < itemsArray.length; i++) {
     let currentItem = itemsArray[i];
     appendItemToBooksListEl(currentItem);
