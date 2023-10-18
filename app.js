@@ -9,12 +9,15 @@ const shoppingListInDB = ref(database, "shoppingList")
 
 const inputBtn = document.querySelector("#input-btn")
 const inputFieldEl = document.querySelector("#input-field")
+const ulEl = document.querySelector("#shopping-list")
 
 
 inputBtn.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
-    
+    inputFieldEl.value = ""
     push(shoppingListInDB, inputValue)
-    
-    console.log(`${inputValue} added to database`)
+    let liEl = document.createElement("li")
+    liEl.textContent = inputValue
+    ulEl.append(liEl)
+
 })
