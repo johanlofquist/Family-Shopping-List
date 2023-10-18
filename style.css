@@ -4,9 +4,9 @@
   --secondColor: #DCE1EB;
   --thirdColor: #AC485A;
 }
-::placeholder {
-    color: var(--secondColor);
-}
+/* ::placeholder {
+    color: black;
+} */
 * {
   box-sizing: border-box;
 }
