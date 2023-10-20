@@ -42,6 +42,7 @@ inputBtn.addEventListener("click", function () {
   let inputValue = inputFieldEl.value;
   inputFieldEl.value = "";
   push(shoppingListInDB, inputValue);
+  inputFieldEl.focus()
 });
 
 function clearItemsListEl() {
