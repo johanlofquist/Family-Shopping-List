@@ -17,7 +17,7 @@ const shoppingListInDB = ref(database, "shoppingList");
 const inputBtn = document.querySelector("#input-btn");
 const inputFieldEl = document.querySelector("#input-field");
 const ulEl = document.querySelector("#shopping-list");
-const html = document.querySelector("html")
+const html = document.querySelector("#myHtml")
 
 
 onValue(shoppingListInDB, function (snapshot) {
@@ -53,6 +53,7 @@ function appendItemToItemsListEl(item) {
   let itemValue = item[1];
   let newEl = document.createElement("li");
   newEl.textContent = itemValue;
+  newEl.classList ="noAction"
   newEl.addEventListener("click", function (e) {
     if (e.target.style.color == "rgb(253, 253, 253)") {  
       let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`);
@@ -64,11 +65,15 @@ function appendItemToItemsListEl(item) {
   });
   ulEl.append(newEl);
 }
-// html.addEventListener("click", function() {
-//   let liEl = document.getElementsByTagName("li")
-//   for (let i = 0; i < liEl.length; i++) {
-//     liEl[i].style.backgroundColor = "#FFFDF8"
-//     liEl[i].style.color = "black"
-//   }
-// })
+
+html.addEventListener("click", function(e) {
+  console.log(e.target.id)
+  var myClass = e.target.classList;
+  if(myClass!="noAction"){
+    let liEl = document.getElementsByTagName("li")
+    for (let i = 0; i < liEl.length; i++) {
+      liEl[i].style.backgroundColor = "#FFFDF8"
+      liEl[i].style.color = "black"      
+  }
+}})
 
