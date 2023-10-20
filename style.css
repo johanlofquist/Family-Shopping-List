@@ -16,6 +16,7 @@ body {
   padding: 0;
   font-family: 'Rubik', sans-serif;
   font-weight: 300;
+  user-select: none;
 }
 
 body {
@@ -50,6 +51,7 @@ body {
   padding: 15px;
   color: #FDFDFD;
   background-color: #AC485A;
+  /* background-color: #ee2b4f; */
   border: none;
   border-radius: 8px;
   font-size: 20px;
@@ -57,6 +59,8 @@ body {
   font-weight: 300;
   margin: 10px 0px;
 }
+
+
 
 ul {
     list-style-type: none;
