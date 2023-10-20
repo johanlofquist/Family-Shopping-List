@@ -53,7 +53,7 @@ function appendItemToItemsListEl(item) {
   let itemValue = item[1];
   let newEl = document.createElement("li");
   newEl.textContent = itemValue;
-  newEl.addEventListener("click", function (e) {
+  newEl.addEventListener("swipe", function (e) {
     if (e.target.style.color == "rgb(253, 253, 253)") {  
       let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`);
       remove(exactLocationOfItemInDB);
